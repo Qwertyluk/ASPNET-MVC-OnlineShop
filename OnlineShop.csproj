@@ -95,7 +95,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\obrazekaspnet.png" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Prototype\Index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

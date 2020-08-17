@@ -95,10 +95,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\obrazekaspnet.png" />
+    <Content Include="Content\Images\baseball_ball.jpg" />
+    <Content Include="Content\Images\baseball_glove.jpg" />
+    <Content Include="Content\Images\bicycle.jpg" />
+    <Content Include="Content\Images\boxing_glove.jpg" />
+    <Content Include="Content\Images\cart.png" />
+    <Content Include="Content\Images\football_ball.jpg" />
+    <Content Include="Content\Images\new.png" />
+    <Content Include="Content\Images\sale.png" />
+    <Content Include="Content\Images\soccer_ball.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Prototype\Index.html" />
+    <Content Include="Prototype\Product.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

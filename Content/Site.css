@@ -2,6 +2,10 @@
     
 }
 
+a{
+    text-decoration:none;
+}
+
 header .title {
     /*background-color: yellow;*/
     height: 60px;
@@ -25,7 +29,7 @@ header .underTitle {
     color: white; 
     font-size: 100%; 
     font-weight: bold; 
-    font-family: 'Times New Roman'"
+    font-family: 'Times New Roman';
 }
 
 header .topMenuElement {
@@ -40,8 +44,26 @@ header .topMenuElement {
     font-family:'Times New Roman'"
 }
 
-header a {
-    text-decoration: none
+header nav {
+    display: table;
+    float: right;
+    height: 100%;
+}
+
+header ul {
+    display:table-cell; 
+    vertical-align:middle;
+}
+
+header li {
+    display: inline;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+header .menuElement {
+    color: white;
+    font-size: 18px;
 }
 
 footer {
@@ -63,6 +85,7 @@ footer {
     footer ul {
         display:table-cell; 
         vertical-align: middle;
+        padding-left:0px;
     }
 
     footer li {
@@ -121,5 +144,81 @@ body #imageHeader {
     left:0px; 
     width:85px; 
     height:85px; 
-    z-index:1;"
+    z-index:1;
+}
+
+#mainContainer {
+    width: 1000px;
+    height: 500px;
+    margin: auto;
+    margin-top: 150px;
+    display: table;
+}
+
+#mainContainerLeft {
+    width: 40%;
+    height: 500px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#productImage {
+    width: 100%;
+    height: 100%
+}
+
+#mainContainerRight {
+    width: 60%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+#productTable {
+    width: 300px;
+    height: 200px;
+    border: 5px solid;
+    margin: auto;
+}
+
+#productName {
+    width: 100%;
+    height: 60%;
+    line-height: 120px;
+    vertical-align: central;
+    text-align: center;
+    font-size: 32px;
+}
+
+#productPrice {
+    background-color: black;
+    width100 %;
+    height: 40%;
+    line-height: 80px;
+    vertical-align: central;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    background-image: url(../Content/Images/cart2.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    color: white;
+}
+
+#productDescription {
+    width: 85%;
+    height: auto;
+    text-align: justify;
+    margin: auto;
+    margin-top: 35px;
+    font-size: 18px;
+}
+
+#productInfo {
+    width: 85%;
+    height: auto;
+    text-align: justify;
+    margin: auto;
+    margin-top: 35px;
+    font-size: 18px;
 }

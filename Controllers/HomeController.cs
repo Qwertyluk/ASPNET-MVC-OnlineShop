@@ -17,7 +17,7 @@ namespace OnlineShop.Controllers
 
             //shopContext.Categories.Add(new Category() { CategoryId = 1, Description = "test", Name = "nazwa" });
             //shopContext.SaveChanges();
-    
+
             return View();
         }
     }

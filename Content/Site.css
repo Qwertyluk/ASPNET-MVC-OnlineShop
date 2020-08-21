@@ -97,6 +97,7 @@ footer {
         display:table-cell;
         vertical-align: middle;
         padding-left: 0px;
+        text-align:center;
     }
 
     footer li {

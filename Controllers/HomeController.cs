@@ -20,5 +20,10 @@ namespace OnlineShop.Controllers
 
             return View();
         }
+
+        public ActionResult StaticSites(string name)
+        {
+            return View(name);
+        }
     }
 }

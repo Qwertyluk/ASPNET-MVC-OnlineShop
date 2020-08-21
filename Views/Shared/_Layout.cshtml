@@ -11,7 +11,7 @@
         <div style="height: 100px; width: 75%; margin: 0 auto;">
             <div id="logo">
                 <div class="title">
-                    <a href="link">
+                    <a href="@Url.Action("Index", "Home")">
                         Sklep internetowy
                     </a>
                 </div>
@@ -23,17 +23,17 @@
             <nav>
                 <ul>
                     <li>
-                        <a class="menuElement" href="link">
+                        <a class="menuElement" href="@Url.Action("Index", "Home")">
                             Strona główna
                         </a>
                     </li>
                     <li>
-                        <a class="menuElement" href="link">
+                        <a class="menuElement" href="@Url.Action("StaticSites", "Home", new { name = "AboutUs" })">
                             O nas
                         </a>
                     </li>
                     <li>
-                        <a class="menuElement" href="link">
+                        <a class="menuElement" href="@Url.Action("StaticSites", "Home", new { name = "Contact" })">
                             Kontakt
                         </a>
                     </li>
@@ -53,12 +53,12 @@
 
     <footer>
         <div class="footer">
-            <nav>
+            <nav style="margin: auto">
                 <ul>
-                    <li><a href="link"><span>Strona główna</span></a></li>
-                    <li><a href="link"><span>O nas</span></a></li>
-                    <li><a href="link"><span>Regulamin</span></a></li>
-                    <li><a href="link"><span>Kontakt</span></a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Strona główna</a></li>
+                    <li><a href="@Url.Action("StaticSites", "Home", new { name = "AboutUs" })">O nas</a></li>
+                    <li><a href="@Url.Action("StaticSites", "Home", new { name = "Policy" })"><span>Regulamin</span></a></li>
+                    <li><a href="@Url.Action("StaticSites", "Home", new { name = "Contact" })">Kontakt</a></li>
                     <li><span style="color:white">Copyright &copy; Sklep internetowy</span></li>
                 </ul>
             </nav>

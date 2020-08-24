@@ -123,6 +123,9 @@ body #imageHeader {
     font-weight:500;
 }
 
+.product{
+    position:relative;
+}
 
 .productImage {
     opacity:0.1;

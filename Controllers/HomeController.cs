@@ -13,12 +13,14 @@ namespace OnlineShop.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //ShopContext shopContext = new ShopContext();
+            ShopContext shopContext = new ShopContext();
 
-            //shopContext.Categories.Add(new Category() { CategoryId = 1, Description = "test", Name = "nazwa" });
-            //shopContext.SaveChanges();
+            HomeIndexModel homeIndexModel = new HomeIndexModel();
 
-            return View();
+            homeIndexModel.OnSaleProducts = shopContext.Products.Where(p => !p.IsSold && p.IsOnSale).OrderBy(p => Guid.NewGuid()).Take(3);
+            homeIndexModel.NewProducts = shopContext.Products.Where(p => !p.IsSold).OrderByDescending(p => p.AddTime).Take(3);
+
+            return View(homeIndexModel);
         }
 
         public ActionResult StaticSites(string name)

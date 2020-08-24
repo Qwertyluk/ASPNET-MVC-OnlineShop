@@ -109,16 +109,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\baseball_ball.jpg" />
-    <Content Include="Content\Images\baseball_glove.jpg" />
-    <Content Include="Content\Images\bicycle.jpg" />
-    <Content Include="Content\Images\boxing_glove.jpg" />
     <Content Include="Content\Images\cart.png" />
     <Content Include="Content\Images\cart2.png" />
-    <Content Include="Content\Images\football_ball.jpg" />
     <Content Include="Content\Images\new.png" />
+    <Content Include="Content\Images\ProductImages\baseball_ball.jpg" />
+    <Content Include="Content\Images\ProductImages\baseball_glove.jpg" />
+    <Content Include="Content\Images\ProductImages\bicycle.jpg" />
+    <Content Include="Content\Images\ProductImages\boxing_glove.jpg" />
+    <Content Include="Content\Images\ProductImages\football_ball.jpg" />
+    <Content Include="Content\Images\ProductImages\soccer_ball.jpg" />
     <Content Include="Content\Images\sale.png" />
-    <Content Include="Content\Images\soccer_ball.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -137,13 +137,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DAL\ShopContext.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Migrations\202008122144363_InitialCreate.cs" />
+    <Compile Include="Migrations\202008122144363_InitialCreate.designer.cs">
+      <DependentUpon>202008122144363_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008240841530_Add field named AddTime to product model.cs" />
+    <Compile Include="Migrations\202008240841530_Add field named AddTime to product model.designer.cs">
+      <DependentUpon>202008240841530_Add field named AddTime to product model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008241032214_Add ImageName field to Product model.cs" />
+    <Compile Include="Migrations\202008241032214_Add ImageName field to Product model.designer.cs">
+      <DependentUpon>202008241032214_Add ImageName field to Product model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ViewModels\HomeIndexModel.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,6 +193,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Product\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008122144363_InitialCreate.resx">
+      <DependentUpon>202008122144363_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008240841530_Add field named AddTime to product model.resx">
+      <DependentUpon>202008240841530_Add field named AddTime to product model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008241032214_Add ImageName field to Product model.resx">
+      <DependentUpon>202008241032214_Add ImageName field to Product model.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

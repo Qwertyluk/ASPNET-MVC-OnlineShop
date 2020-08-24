@@ -1,106 +1,53 @@
-﻿    <section style="margin-top:200px;">
-        <ul style="display:table; margin: auto;">
-            <li style="margin:auto; display:table-cell; padding-left:50px;">
-                <article>
-                    <div class="product" style="position:relative;">
-                        <a class="addToCart" href="link">
-                            <img src="../Content/Images/cart.png" />
-                        </a>
-                        <a class="productLink" href="link">
-                            <div style="position:relative;">
-                                <img class="saleIcon" src="../Content/Images/sale.png" />
-                                <img class="productImage" src="../Content/Images/bicycle.jpg" />
-                                <h1 id="imageHeader">Tutaj bedzie tytul</h1>
-                            </div>
-                        </a>
-                    </div>
-                </article>
-            </li>
-            <li style="margin:auto; display:table-cell; padding-left:50px;">
-                <article>
-                    <div class="product" style="position:relative;">
-                        <a class="addToCart" href="link">
-                            <img src="../Content/Images/cart.png" />
-                        </a>
-                        <a class="productLink" href="link">
-                            <div style="position:relative;">
-                                <img class="saleIcon" src="../Content/Images/sale.png" />
-                                <img class="productImage" src="../Content/Images/football_ball.jpg" />
-                                <h1 id="imageHeader">Tutaj bedzie tytul</h1>
-                            </div>
-                        </a>
-                    </div>
-                </article>
-            </li>
-            <li style="margin:auto; display:table-cell; padding-left:50px;">
-                <article>
-                    <div class="product" style="position:relative;">
-                        <a class="addToCart" href="link">
-                            <img src="../Content/Images/cart.png" />
-                        </a>
-                        <a class="productLink" href="link">
-                            <div style="position:relative;">
-                                <img class="saleIcon" src="../Content/Images/sale.png" />
-                                <img class="productImage" src="../Content/Images/soccer_ball.jpg" "     />
-                                <h1 id="imageHeader">Tutaj bedzie tytul</h1>
-                            </div>
-                        </a>
-                    </div>
-                </article>
-            </li>
-        </ul>
-    </section>
+﻿@model OnlineShop.Models.HomeIndexModel
+
+@using OnlineShop.Helpers
 
 
-    <section style="margin-top:200px;">
-        <ul style="display:table; margin: auto;">
+<section style="margin-top:200px;">
+    <ul style="display:table; margin: auto;">
+        @foreach (var item in Model.OnSaleProducts)
+        {
             <li style="margin:auto; display:table-cell; padding-left:50px;">
                 <article>
-                    <div class="product" style="position:relative;">
-                        <a class="addToCart" href="link">
-                            <img src="../Content/Images/cart.png" />
+                    <div class="product">
+                        <a class="addToCart" href="@Url.Action("AddToCart", "Cart")">
+                            <img src="@Url.GetImagePath("cart.png")" />
                         </a>
-                        <a class="productLink" href="link">
+                        <a class="productLink" href="@Url.Action("ShowInformation", "Product")">
                             <div style="position:relative;">
-                                <img class="saleIcon" src="../Content/Images/new.png" />
-                                <img class="productImage" src="../Content/Images/baseball_ball.jpg" />
-                                <h1 id="imageHeader">Tutaj bedzie tytul</h1>
+                                <img class="saleIcon" src="@Url.GetImagePath("sale.png")" />
+                                <img class="productImage" src="@Url.GetProductImagePath(item.ImageName)" />
+                                <h1 id="imageHeader">@item.Name</h1>
                             </div>
                         </a>
                     </div>
                 </article>
             </li>
+        }
+    </ul>
+</section>
+
+
+<section style="margin-top:200px;">
+    <ul style="display:table; margin: auto;">
+        @foreach (var item in Model.NewProducts)
+        {
             <li style="margin:auto; display:table-cell; padding-left:50px;">
                 <article>
                     <div class="product" style="position:relative;">
-                        <a class="addToCart" href="link">
-                            <img src="../Content/Images/cart.png" />
+                        <a class="addToCart" href="@Url.Action("AddToCart", "Cart")">
+                            <img src="@Url.GetImagePath("cart.png")" />
                         </a>
-                        <a class="productLink" href="link">
+                        <a class="productLink" href="@Url.Action("ShowInformation", "Product")">
                             <div style="position:relative;">
-                                <img class="saleIcon" src="../Content/Images/new.png" />
-                                <img class="productImage" src="../Content/Images/boxing_glove.jpg" />
-                                <h1 id="imageHeader">Tutaj bedzie tytul</h1>
+                                <img class="saleIcon" src="@Url.GetImagePath("new.png")" />
+                                <img class="productImage" src="@Url.GetProductImagePath(item.ImageName)" />
+                                <h1 id="imageHeader">@item.Name</h1>
                             </div>
                         </a>
                     </div>
                 </article>
             </li>
-            <li style="margin:auto; display:table-cell; padding-left:50px;">
-                <article>
-                    <div class="product" style="position:relative;">
-                        <a class="addToCart" href="link">
-                            <img src="../Content/Images/cart.png" />
-                        </a>
-                        <a class="productLink" href="link">
-                            <div style="position:relative;">
-                                <img class="saleIcon" src="../Content/Images/new.png" />
-                                <img class="productImage" src="../Content/Images/baseball_glove.jpg" />
-                                <h1 id="imageHeader">Tutaj bedzie tytul</h1>
-                            </div>
-                        </a>
-                    </div>
-                </article>
-            </li>
-        </ul>
-    </section>
+        }
+    </ul>
+</section>

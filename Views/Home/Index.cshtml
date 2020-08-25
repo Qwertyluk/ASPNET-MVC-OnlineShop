@@ -2,6 +2,9 @@
 
 @using OnlineShop.Helpers
 
+@{ 
+    ViewBag.Title = "Sklep Internetowy";
+}
 
 <section style="margin-top:200px;">
     <ul style="display:table; margin: auto;">
@@ -13,7 +16,7 @@
                         <a class="addToCart" href="@Url.Action("AddToCart", "Cart")">
                             <img src="@Url.GetImagePath("cart.png")" />
                         </a>
-                        <a class="productLink" href="@Url.Action("ShowInformation", "Product")">
+                        <a class="productLink" href="@Url.Action("ShowInformation", "Product", new { id = item.ProductId })">
                             <div style="position:relative;">
                                 <img class="saleIcon" src="@Url.GetImagePath("sale.png")" />
                                 <img class="productImage" src="@Url.GetProductImagePath(item.ImageName)" />
@@ -35,10 +38,10 @@
             <li style="margin:auto; display:table-cell; padding-left:50px;">
                 <article>
                     <div class="product" style="position:relative;">
-                        <a class="addToCart" href="@Url.Action("AddToCart", "Cart")">
+                        <a class="addToCart" href="@Url.Action("AddToCart", "Cart", new { id = item.ProductId })">
                             <img src="@Url.GetImagePath("cart.png")" />
                         </a>
-                        <a class="productLink" href="@Url.Action("ShowInformation", "Product")">
+                        <a class="productLink" href="@Url.Action("ShowInformation", "Product", new { id = item.ProductId })">
                             <div style="position:relative;">
                                 <img class="saleIcon" src="@Url.GetImagePath("new.png")" />
                                 <img class="productImage" src="@Url.GetProductImagePath(item.ImageName)" />

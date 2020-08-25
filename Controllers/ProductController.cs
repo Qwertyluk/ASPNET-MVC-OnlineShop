@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OnlineShop.DAL;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,9 +16,11 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult ShowInformation()
+        public ActionResult ShowInformation(int id)
         {
-            return View();
+            ShopContext shopContext = new ShopContext();
+
+            return View(shopContext.Products.Where(p => p.ProductId == id).First());
         }
     }
 }

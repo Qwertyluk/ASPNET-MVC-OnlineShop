@@ -184,6 +184,7 @@
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\Policy.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Product\ShowInformation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -194,7 +195,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cart\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008122144363_InitialCreate.resx">

@@ -224,7 +224,7 @@ body #imageHeader {
 #productDescription {
     width: 85%;
     height: auto;
-    text-align: justify;
+    text-align: center;
     margin: auto;
     margin-top: 35px;
     font-size: 18px;
@@ -233,7 +233,7 @@ body #imageHeader {
 #productInfo {
     width: 85%;
     height: auto;
-    text-align: justify;
+    text-align: center;
     margin: auto;
     margin-top: 35px;
     font-size: 18px;

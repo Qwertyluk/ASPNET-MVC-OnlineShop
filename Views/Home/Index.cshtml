@@ -2,9 +2,22 @@
 
 @using OnlineShop.Helpers
 
-@{ 
+@{
     ViewBag.Title = "Sklep Internetowy";
 }
+
+<nav id="categoryHorizontalMenu">
+    <ul>
+        @foreach (var item in Model.ExtantCategories)
+        {
+            <li>
+                <a href="link">
+                    @item.Name
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
 
 <section style="margin-top:200px;">
     <ul style="display:table; margin: auto;">

@@ -9,5 +9,7 @@ namespace OnlineShop.Models
     {
         public IEnumerable <Product> NewProducts { get; set; }
         public IEnumerable <Product> OnSaleProducts { get; set; }
+
+        public IEnumerable <Category> ExtantCategories { get; set; }
     }
 }

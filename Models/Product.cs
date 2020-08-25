@@ -34,5 +34,8 @@ namespace OnlineShop.Models
 
         [ScaffoldColumn(false)]
         public string ImageName { get; set; }
+
+
+        public virtual Category ProductCategory { get; set; }
     }
 }

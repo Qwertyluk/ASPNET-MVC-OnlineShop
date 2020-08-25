@@ -19,6 +19,7 @@ namespace OnlineShop.Controllers
 
             homeIndexModel.OnSaleProducts = shopContext.Products.Where(p => !p.IsSold && p.IsOnSale).OrderBy(p => Guid.NewGuid()).Take(3);
             homeIndexModel.NewProducts = shopContext.Products.Where(p => !p.IsSold).OrderByDescending(p => p.AddTime).Take(3);
+            homeIndexModel.ExtantCategories = shopContext.Categories;
 
             return View(homeIndexModel);
         }

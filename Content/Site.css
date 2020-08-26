@@ -260,10 +260,10 @@ body #imageHeader {
     #categoryHorizontalMenu ul {
         height: 100%;
         text-align: center;
+        list-style: none;
     }
 
         #categoryHorizontalMenu ul li {
-            list-style: none;
             display: inline-block;
             background-color: darkgray;
             width: auto;
@@ -283,4 +283,61 @@ body #imageHeader {
 
         #categoryHorizontalMenu ul li a:hover{
             background-color:dimgray;
+        }
+
+#categoryListContainer {
+    width: 1500px;
+    height: auto;
+    min-height: 800px;
+    margin: 200px auto;
+}
+
+    #categoryListContainer #leftList {
+        width: 30%;
+        height: auto;
+        display: inline-block;
+    }
+
+        #categoryListContainer #leftList ul li {
+            text-align: center;
+            list-style: none;
+            background-color: darkgray;
+            width: 90%;
+            height: 50px;
+            border: 1px solid;
+            font-size: 25px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: 4px;
+            margin-top: 15px;
+        }
+
+            #categoryListContainer #leftList ul li a{
+                color:black;
+                display:block;
+            }
+
+            #categoryListContainer #rightList {
+                width: 65%;
+                height: auto;
+                display: inline-block;
+                vertical-align: top;
+                height: auto;
+                border-left: 3px groove
+            }
+
+        #categoryListContainer #rightList h1 {
+            width: 100%;
+            height: auto;
+            display: block;
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 80px
+        }
+
+        #categoryListContainer #rightList ul li {
+            margin: auto;
+            display: table-cell;
+            padding-left: 50px;
+            float: left;
         }

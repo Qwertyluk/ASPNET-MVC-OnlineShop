@@ -1,0 +1,14 @@
+﻿@model IEnumerable<OnlineShop.Models.Category>
+
+<nav id="leftList">
+    <ul>
+        @foreach (var category in Model)
+        {
+            <li>
+                <a href="@Url.Action("DisplayProductsWithCategory", "Product", new { id = category.CategoryId })">
+                    @category.Name
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

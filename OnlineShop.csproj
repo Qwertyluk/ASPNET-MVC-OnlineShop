@@ -123,6 +123,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Prototype\Cart.html" />
+    <Content Include="Prototype\Category.html" />
     <Content Include="Prototype\Index.html" />
     <Content Include="Prototype\Product.html" />
     <Content Include="Scripts\bootstrap.js" />
@@ -189,6 +190,8 @@
     <Content Include="Views\Home\Policy.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Product\ShowInformation.cshtml" />
+    <Content Include="Views\Product\_DisplayVerticalCategoryList.cshtml" />
+    <Content Include="Views\Product\DisplayProductsWithCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

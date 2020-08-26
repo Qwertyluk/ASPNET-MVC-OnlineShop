@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OnlineShop.Models.Product>
+
+@using OnlineShop.Helpers
+
+@{
+    ViewBag.Title = "DisplayProductsWithCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="categoryListContainer">
+    @Html.Action("DisplayVerticalCategoryList", "Product")
+    <div id="rightList">
+        @if(Model.Count() > 0) {
+            <h1>@Model.First().ProductCategory.Name</h1>
+        }
+        else
+        {
+            <h1>Brak produktów</h1>
+        }
+        <nav>
+            <ul>
+                @foreach (var product in Model)
+                {
+                    <li>
+                        <article>
+                            <div class="product">
+                                <a class="addToCart" href="@Url.Action("AddToCart", "Cart", new { id = product.ProductId })">
+                                    <img src="@Url.GetImagePath("cart.png")" />
+                                </a>
+                                <a class="productLink" href="@Url.Action("ShowInformation", "Product", new { id = product.ProductId })">
+                                    <div style="position:relative;">
+                                        <img class="saleIcon" src="@Url.GetImagePath("sale.png")" />
+                                        <img class="productImage" src="@Url.GetProductImagePath(product.ImageName)" />
+                                        <h2 id="imageHeader">@product.Name</h2>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+

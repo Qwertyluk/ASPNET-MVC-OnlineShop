@@ -4,6 +4,7 @@
 
 @{
     ViewBag.Title = "Sklep Internetowy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <nav id="categoryHorizontalMenu">
@@ -11,7 +12,7 @@
         @foreach (var item in Model.ExtantCategories)
         {
             <li>
-                <a href="link">
+                <a href="@Url.Action("DisplayProductsWithCategory", "Product", new { id = item.CategoryId })">
                     @item.Name
                 </a>
             </li>

@@ -10,6 +10,8 @@ namespace OnlineShop.Controllers
 {
     public class ProductController : Controller
     {
+        ShopContext shopContext;
+
         // GET: Product
         public ActionResult Index()
         {
@@ -18,9 +20,24 @@ namespace OnlineShop.Controllers
 
         public ActionResult ShowInformation(int id)
         {
-            ShopContext shopContext = new ShopContext();
+            shopContext = new ShopContext();
 
             return View(shopContext.Products.Where(p => p.ProductId == id).First());
+        }
+
+        public ActionResult DisplayProductsWithCategory(int id)
+        {
+            shopContext = new ShopContext();
+
+            return View(shopContext.Products.Where(p => p.ProductCategory.CategoryId == id));
+        }
+
+        [ChildActionOnly]
+        public ActionResult DisplayVerticalCategoryList()
+        {
+            shopContext = new ShopContext();
+
+            return View("_DisplayVerticalCategoryList", shopContext.Categories);
         }
     }
 }

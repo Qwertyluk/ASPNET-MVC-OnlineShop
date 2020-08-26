@@ -7,9 +7,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<article>
-    <div id="mainContainer">
-
+<div id="mainContainer">
+    <div class="navigationPath">
+        <img src="@Url.GetImagePath("house.png")"/>
+        <h3>@Html.MvcSiteMap().SiteMapPath()</h3>
+    </div>
+    <div>
         <div id="mainContainerLeft">
             <img id="productImage" src="@Url.GetProductImagePath(Model.ImageName)" />
         </div>
@@ -39,13 +42,12 @@
             <hr width=65% />
 
             <div id="productDescription">
-            <span>
-                @Model.Description
-            </span>
-        </div>
+                <span>
+                    @Model.Description
+                </span>
+            </div>
 
         </div>
-
     </div>
-</article>
+</div>
 

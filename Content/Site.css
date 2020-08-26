@@ -1,9 +1,8 @@
 ﻿body {
-    
 }
 
-a{
-    text-decoration:none;
+a {
+    text-decoration: none;
 }
 
 header .title {
@@ -16,7 +15,7 @@ header .title {
     font-size: 200%;
     font-weight: bold;
     font-family: 'Times New Roman';
-    overflow:hidden;
+    overflow: hidden;
 }
 
 header #logo {
@@ -24,34 +23,34 @@ header #logo {
     width: 25%;
 }
 
-header a{
-    height:100%;
-    width:100%;
-    color:white;
+header a {
+    height: 100%;
+    width: 100%;
+    color: white;
 }
 
 header .underTitle {
-    height: 40px; 
-    width: 100%; 
-    text-align: center; 
-    vertical-align: central; 
-    line-height: 40px; 
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    vertical-align: central;
+    line-height: 40px;
     color: white;
-    font-size: 100%; 
-    font-weight: bold; 
+    font-size: 100%;
+    font-weight: bold;
     font-family: 'Times New Roman';
-    overflow:hidden;
+    overflow: hidden;
 }
 
 header .topMenuElement {
-    height: 100px; 
-    width:10%; 
-    float:right; 
-    text-align:center; 
-    vertical-align:central; 
-    line-height:100px; 
-    font-size:125%; 
-    font-family:'Times New Roman'"
+    height: 100px;
+    width: 10%;
+    float: right;
+    text-align: center;
+    vertical-align: central;
+    line-height: 100px;
+    font-size: 125%;
+    font-family: 'Times New Roman'"
 }
 
 header nav {
@@ -61,8 +60,8 @@ header nav {
 }
 
 header ul {
-    display:table-cell; 
-    vertical-align:middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 header li {
@@ -94,21 +93,21 @@ footer {
     }
 
     footer ul {
-        display:table-cell;
+        display: table-cell;
         vertical-align: middle;
         padding-left: 0px;
-        text-align:center;
+        text-align: center;
     }
 
     footer li {
-        display:inline;
+        display: inline;
         margin-left: 50px;
-        white-space:nowrap;
+        white-space: nowrap;
     }
 
     footer a {
-        color:white; 
-        text-decoration:none;
+        color: white;
+        text-decoration: none;
     }
 
 
@@ -119,22 +118,22 @@ body #imageHeader {
     top: 40%;
     width: 250px;
     text-align: center;
-    font-size:18px; 
-    font-weight:500;
+    font-size: 18px;
+    font-weight: 500;
 }
 
-.product{
-    position:relative;
+.product {
+    position: relative;
 }
 
 .productImage {
-    opacity:0.1;
+    opacity: 0.1;
     width: 250px;
     height: 250px;
 }
 
-.productLink{
-    text-decoration:none;
+.productLink {
+    text-decoration: none;
 }
 
 
@@ -147,20 +146,20 @@ body #imageHeader {
     background-color: rgba(255, 255, 255, 0.85);
 }
 
-.addToCart{
-    z-index:1;
-    position:absolute;
-    bottom:0;
-    right:0;
+.addToCart {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .saleIcon {
-    position:absolute;
-    top:0px; 
-    left:0px; 
-    width:85px; 
-    height:85px; 
-    z-index:1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 85px;
+    height: 85px;
+    z-index: 1;
 }
 
 #mainContainer {
@@ -246,9 +245,9 @@ body #imageHeader {
     display: inline-block;
 }
 
-.linkButton:hover, .linkButton:active {
-    background-color: blue;
-}
+    .linkButton:hover, .linkButton:active {
+        background-color: blue;
+    }
 
 
 #categoryHorizontalMenu {
@@ -276,14 +275,14 @@ body #imageHeader {
             margin-top: 4px;
         }
 
-        #categoryHorizontalMenu ul li a{
-            display:block;
-            color:black;
-        }
+            #categoryHorizontalMenu ul li a {
+                display: block;
+                color: black;
+            }
 
-        #categoryHorizontalMenu ul li a:hover{
-            background-color:dimgray;
-        }
+                #categoryHorizontalMenu ul li a:hover {
+                    background-color: dimgray;
+                }
 
 #categoryListContainer {
     width: 1500px;
@@ -312,19 +311,19 @@ body #imageHeader {
             margin-top: 15px;
         }
 
-            #categoryListContainer #leftList ul li a{
-                color:black;
-                display:block;
+            #categoryListContainer #leftList ul li a {
+                color: black;
+                display: block;
             }
 
-            #categoryListContainer #rightList {
-                width: 65%;
-                height: auto;
-                display: inline-block;
-                vertical-align: top;
-                height: auto;
-                border-left: 3px groove
-            }
+    #categoryListContainer #rightList {
+        width: 65%;
+        height: auto;
+        display: inline-block;
+        vertical-align: top;
+        height: auto;
+        border-left: 3px groove
+    }
 
         #categoryListContainer #rightList h1 {
             width: 100%;
@@ -341,3 +340,11 @@ body #imageHeader {
             padding-left: 50px;
             float: left;
         }
+
+.navigationPath img {
+    display: inline;
+}
+
+.navigationPath h3 {
+    display: inline;
+}

@@ -1,4 +1,6 @@
 ﻿using OnlineShop.DAL;
+using OnlineShop.Infrastructure.CacheProvider;
+using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,24 +22,28 @@ namespace OnlineShop.Controllers
 
         public ActionResult ShowInformation(int id)
         {
-            //shopContext = new ShopContext();
-
             return View(shopContext.Products.Where(p => p.ProductId == id).First());
         }
 
         public ActionResult DisplayProductsWithCategory(int id)
         {
-            //shopContext = new ShopContext();
-
             return View(shopContext.Products.Where(p => p.ProductCategory.CategoryId == id));
         }
 
         [ChildActionOnly]
         public ActionResult DisplayVerticalCategoryList()
         {
-            //shopContext = new ShopContext();
+            DefaultCacheProvider cache = new DefaultCacheProvider();
 
-            return View("_DisplayVerticalCategoryList", shopContext.Categories);
+            if (cache.isSet(DefaultCacheProvider.CategoriesCacheName))
+                return View("_DisplayVerticalCategoryList", (IEnumerable<Category>)cache.Get(DefaultCacheProvider.CategoriesCacheName)); 
+            else
+            {
+                IEnumerable<Category> categories = shopContext.Categories;
+                cache.Set(DefaultCacheProvider.CategoriesCacheName, categories, 3600);
+                return View("_DisplayVerticalCategoryList", categories);
+            }
+            
         }
     }
 }

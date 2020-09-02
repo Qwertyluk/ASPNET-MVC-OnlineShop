@@ -38,8 +38,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="menuElement" href="link">
-                            Koszyk
+                        <a class="menuElement" href="@Url.Action("Index", "Cart")">
+                            Koszyk (@Html.Action("GetAmountElementsInCart", "Cart"))
                         </a>
                     </li>
                 </ul>

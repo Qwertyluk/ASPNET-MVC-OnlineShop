@@ -44,16 +44,6 @@ namespace OnlineShop.Controllers
                 cache.Set(DefaultCacheProvider.CategoriesCacheName, categoryEnumerable, 3600);
                 return View("_DisplayVerticalCategoryList", categoryEnumerable);
             }
-
-            /*if (cache.isSet(DefaultCacheProvider.CategoriesCacheName))
-                return View("_DisplayVerticalCategoryList", cache.Get<IEnumerable<Category>>(DefaultCacheProvider.CategoriesCacheName)); 
-            else
-            {
-                IEnumerable<Category> categories = shopContext.Categories;
-                cache.Set(DefaultCacheProvider.CategoriesCacheName, categories, 3600);
-                return View("_DisplayVerticalCategoryList", categories);
-            }*/
-
         }
     }
 }

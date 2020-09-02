@@ -19,7 +19,7 @@ namespace OnlineShop.Infrastructure.Cart
             this.shopContext = shopContext;
         }
 
-        List<OrderElement> GetCart()
+        public List<OrderElement> GetCart()
         {
             List<OrderElement> cartElements;
 
@@ -77,12 +77,12 @@ namespace OnlineShop.Infrastructure.Cart
             }
         }
 
-        public void Clean()
+        void Clean()
         {
             session.Set<List<OrderElement>>(DefaultSessionProvider.CartElementsSessionName, null);
         }
 
-        decimal GetOrderValue()
+        public decimal GetOrderValue()
         {
             decimal sum = 0M;
 
@@ -91,7 +91,7 @@ namespace OnlineShop.Infrastructure.Cart
             return sum;
         }
 
-        public void CreateOrder()
+        void CreateOrder()
         {
             Order newOrder = new Order()
             {
@@ -101,6 +101,15 @@ namespace OnlineShop.Infrastructure.Cart
             };
 
             //fill rest of fields and add to database
+        }
+
+        public int GetAmountElementsInCart()
+        {
+            int sum = 0;
+
+            GetCart().ForEach(e => sum += e.Amount);
+
+            return sum;
         }
     }
 }

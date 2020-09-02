@@ -27,7 +27,7 @@
             <li style="margin:auto; display:table-cell; padding-left:50px;">
                 <article>
                     <div class="product">
-                        <a class="addToCart" href="@Url.Action("AddToCart", "Cart")">
+                        <a class="addToCart" href="@Url.Action("AddToCart", "Cart", new { id = item.ProductId })">
                             <img src="@Url.GetImagePath("cart.png")" />
                         </a>
                         <a class="productLink" href="@Url.Action("ShowInformation", "Product", new { id = item.ProductId })">

@@ -1,4 +1,5 @@
-﻿using OnlineShop.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,12 +9,18 @@ using System.Web;
 
 namespace OnlineShop.DAL
 {
-    public class ShopContext : DbContext
+    public class ShopContext : IdentityDbContext<ApplicationUser>
     {
         public ShopContext() : base("ShopContext") { }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
+
+
+        public static ShopContext Create() 
+        {
+            return new ShopContext();
+        }
 
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {

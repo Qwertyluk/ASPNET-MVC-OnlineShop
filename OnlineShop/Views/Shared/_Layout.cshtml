@@ -47,6 +47,8 @@
         </div>
     </header>
 
+    @Html.Partial("_LoginPartial")
+
     <div>
         @RenderBody()
     </div>
@@ -64,6 +66,8 @@
             </nav>
         </div>
     </footer>
+
+    @RenderSection("Scripts", required: false)
 
 </body>
 </html>

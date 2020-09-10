@@ -1,3 +1,7 @@
+#Files declared by myself
+Web.config
+
+#Files declared by gitignore file generator
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,windows
 

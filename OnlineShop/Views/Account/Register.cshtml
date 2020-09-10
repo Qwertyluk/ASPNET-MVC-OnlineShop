@@ -1,0 +1,185 @@
+﻿@model OnlineShop.Models.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Sklep Internetowy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mainAccountContainer">
+    <h1 class="containerHeader">Rejestracja</h1>
+    <div class="accountContainer">
+        @using (Html.BeginForm("Register"))
+        {
+            @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.Username)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Username)<span class="asterisk">*</span>
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Username)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.Password)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Password)<span class="asterisk">*</span>
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Password)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.ConfirmPassword)<span class="asterisk">*</span>
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.ConfirmPassword)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.User.Email)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.User.Email)<span class="asterisk">*</span>
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.User.Email)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.User.Name)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.User.Name)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.User.Name)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.User.Surname)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.User.Surname)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.User.Surname)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.User.Adress)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.User.Adress)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.User.Adress)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.User.PostCode)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.User.PostCode)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.User.PostCode)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.User.Phone)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.User.Phone)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.User.Phone)
+                </td>
+            </tr>
+
+            @if (!ViewData.ModelState.IsValidField("Validation"))
+            {
+                foreach (var error in ViewData.ModelState["Validation"].Errors)
+                {
+                    <tr>
+                        <td class="validationMessage" colspan="2">
+                            @error.ErrorMessage
+                        </td>
+                    </tr>
+                }
+            }
+
+            <tr>
+                <td colspan="2" class="submitButtonColumn">
+                    <input class="submitButton" value="Submit" type="submit" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="message" colspan="2">
+                    * - Pola sa wymagane
+                </td>
+            </tr>
+
+        </table>
+        }
+    </div>
+</div>
+
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate-unobtrusive")
+}

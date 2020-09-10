@@ -1,0 +1,82 @@
+﻿@model OnlineShop.Models.ViewModels.LoginModel
+
+@{
+    ViewBag.Title = "Sklep Internetowy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mainAccountContainer">
+    <h1 class="containerHeader">Logowanie</h1>
+    <div class="accountContainer">
+        @using (Html.BeginForm("Login"))
+        {
+            @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.UserName)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.UserName)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.Password)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Password)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Password)
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="text-align:right;">
+                    @Html.LabelFor(m => m.Remember)
+                    @Html.EditorFor(m => m.Remember)
+                </td>
+            </tr>
+
+            @if (!ViewData.ModelState.IsValidField("Validation"))
+            {
+                foreach (var error in ViewData.ModelState["Validation"].Errors)
+                {
+                    <tr>
+                        <td class="validationMessage" colspan="2">
+                            @error.ErrorMessage
+                        </td>
+                    </tr>
+                }
+            }
+
+            <tr>
+                <td class="submitButtonColumn" colspan="2">
+                    <input class="submitButton" value="Submit" type="submit" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="message" colspan="2">
+                    @Html.ActionLink("Nie mam jeszcze konta", "Register", "Account")
+                </td>
+            </tr>
+        </table>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate-unobtrusive")
+}

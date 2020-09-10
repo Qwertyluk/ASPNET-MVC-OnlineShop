@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="accountContainer">
+            <ul>
+                <li>@Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "accountContainerButton" })</li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()" class="accountContainerButton">Wyloguj</a></li>
+            </ul>
+        </div>
+    }
+}
+else
+{
+    <div class="accountContainer">
+        <ul>
+            <li>@Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "accountContainerButton" })</li>
+            <li>@Html.ActionLink("Logowanie", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "accountContainerButton" })</li>
+        </ul>
+    </div>
+}
+

@@ -251,7 +251,7 @@ body #imageHeader {
 
 
 #categoryHorizontalMenu {
-    width: 1500px;
+    width: 75%;
     height: auto;
     margin: 100px auto;
 }
@@ -273,11 +273,13 @@ body #imageHeader {
             text-align: center;
             line-height: 50px;
             margin-top: 4px;
+            border-radius: 15%;
         }
 
             #categoryHorizontalMenu ul li a {
                 display: block;
                 color: black;
+                border-radius: 15%;
             }
 
                 #categoryHorizontalMenu ul li a:hover {
@@ -384,3 +386,93 @@ body #imageHeader {
     text-align: center;
     margin-bottom: 100px;
 }
+
+.mainAccountContainer {
+    width: 35%;
+    border: 1px solid black;
+    margin: 150px auto;
+    overflow:auto;
+}
+
+    .mainAccountContainer .containerHeader {
+        text-align: center;
+    }
+
+    .mainAccountContainer .accountContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .mainAccountContainer .accountContainer table {
+            border-spacing: 30px 5px;
+        }
+
+            .mainAccountContainer .accountContainer table .columnSpan {
+                text-align: right;
+            }
+
+            .mainAccountContainer .accountContainer table .validationMessage {
+                color: red;
+                text-align: center;
+                font-size: 12px;
+                vertical-align: bottom;
+            }
+
+            .mainAccountContainer .accountContainer table tr .labelForEditor {
+                text-align: center;
+            }
+
+            .mainAccountContainer .accountContainer table tr td .asterisk {
+                font-size: 11px;
+                vertical-align: top;
+            }
+
+            .mainAccountContainer .accountContainer table tr .submitButtonColumn {
+                text-align: right;
+            }
+
+                .mainAccountContainer .accountContainer table tr .submitButtonColumn .submitButton {
+                    width: 25%;
+                }
+
+            .mainAccountContainer .accountContainer table tr .message {
+                text-align: center;
+                font-size: 12px;
+            }
+
+.accountContainer {
+    width: 75%;
+    height: auto;
+    margin: 25px auto;
+}
+
+    .accountContainer ul {
+        height: 100%;
+        text-align: center;
+        list-style: none;
+    }
+
+        .accountContainer ul li {
+            display: inline-block;
+            background-color: darkgray;
+            width: auto;
+            min-width: 150px;
+            height: 50px;
+            border: 1px solid;
+            font-size: 25px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: 4px;
+        }
+
+            .accountContainer ul li .accountContainerButton {
+                display: block;
+                color: black;
+                text-decoration:none;
+                color:black;
+            }
+
+            .accountContainer ul li .accountContainerButton:hover {
+                background-color: dimgray;
+            }

@@ -16,7 +16,7 @@
                 <tr>
                     <td>
                         <a href="@Url.Action("ShowInformation", "Product", new { id = element.ProductElement.ProductId })">
-                            <img src="@Url.GetProductImagePath(element.ProductElement.ImageName)" />
+                            <img src="@Url.GetProductImagePath(element.ProductElement.ImageName)" style="height:100%; width:100%;"/>
                         </a>
                     </td>
                     <td>
@@ -44,11 +44,11 @@
     {
         <h1 id="emptyCartMessage">Twój koszyk jest pusty</h1>
     }
-    <div style="width:1000px;">
-        <a class="linkButton" href="@Url.Action("Index", "Home")" style="float:left;">Kontynuuj zakupy</a>
-        @if (Model.OrderElements.Count > 0)
-        {
-            <a class="linkButton" href="link" style="float:right;">Zapłać</a>
-        }
-    </div>
+<div style="width:1000px;">
+    <a class="linkButton" href="@Url.Action("Index", "Home")" style="float:left;">Kontynuuj zakupy</a>
+    @if (Model.OrderElements.Count > 0)
+    {
+        <a class="linkButton" href="@Url.Action("CreateOrder", "Cart")" style="float:right;">Przejdź dalej</a>
+    }
+</div>
 </div>

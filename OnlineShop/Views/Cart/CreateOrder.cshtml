@@ -1,0 +1,140 @@
+﻿@model OnlineShop.Models.ViewModels.OrderViewModel
+
+@{
+    ViewBag.Title = "Zamówienie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mainAccountContainer">
+    <h1 class="containerHeader">Potwierdź dane do zamówienia</h1>
+    <div class="accountContainer">
+        @using (Html.BeginForm("ConfirmOrder", "Cart", FormMethod.Post, new { id = "orderInfo" }))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.PurchaserName)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.PurchaserName)<span class="asterisk">*</span>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.PurchaserName)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.PurchaserSurname)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.PurchaserSurname)<span class="asterisk">*</span>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.PurchaserSurname)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.PurchaserPhone)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.PurchaserPhone)<span class="asterisk">*</span>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.PurchaserPhone)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.PurchaserAdress)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.PurchaserAdress)<span class="asterisk">*</span>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.PurchaserAdress)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.PurchaserPostCode)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.PurchaserPostCode)<span class="asterisk">*</span>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.PurchaserPostCode)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.PurchaserEmail)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.PurchaserEmail)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.PurchaserEmail)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.Comment)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.Comment)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.Comment)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="message" colspan="2">
+                        * - Pola sa wymagane
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <div style="width: auto; text-align:center; font-size: 20px;font-weight: bold">
+        Razem: @String.Format("{0:0.00}", Model.OrderValue) zł
+    </div>
+
+    <div style="width:auto;">
+        <a class="linkButton" href="@Url.Action("Index", "Cart")" style="float:left;">Wróć</a>
+        <a class="linkButton" href="javascript:document.getElementById('orderInfo').submit()" style="float:right;">Potwierdź</a>
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate-unobtrusive")
+}

@@ -20,11 +20,6 @@ namespace OnlineShop.Models
         [StringLength(30, ErrorMessage = "Nazwisko nie moze miec wiecej niz 30 znakow")]
         public string Surname { get; set; }
 
-        [Display(Name = "Adres E-mail")]
-        [EmailAddress]
-        [Required(ErrorMessage = "Pole jest wymagane")]
-        public string Email { get; set; }
-
         [Display(Name = "Adres zamieszkania")]
         [StringLength(100, ErrorMessage = "Adres nie moze miec wiecej niz 100 znakow")]
         public string Adress { get; set; }
@@ -32,9 +27,5 @@ namespace OnlineShop.Models
         [Display(Name = "Kod pocztowy")]
         [RegularExpression("[0-9]{2}-[0-9]{3}", ErrorMessage = "Kod jest w formacie XX-XXX")]
         public string PostCode { get; set; }
-
-        [Phone]
-        [Display(Name = "Numer telefonu")]
-        public string Phone { get; set; }
     }
 }

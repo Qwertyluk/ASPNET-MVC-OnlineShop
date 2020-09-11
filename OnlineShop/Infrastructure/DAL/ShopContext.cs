@@ -15,7 +15,7 @@ namespace OnlineShop.DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<CartOrderElement> OrderElements { get; set; }
 
         public static ShopContext Create() 
         {

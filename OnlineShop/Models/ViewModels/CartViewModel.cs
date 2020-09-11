@@ -7,7 +7,7 @@ namespace OnlineShop.Models.ViewModels
 {
     public class CartViewModel
     {
-        public List<OrderElement> OrderElements { get; set; }
+        public List<CartOrderElement> OrderElements { get; set; }
 
         public decimal OrderValue { get; set; }
     }

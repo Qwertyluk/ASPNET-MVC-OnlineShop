@@ -17,13 +17,20 @@ namespace OnlineShop.Models.ViewModels
         [Display(Name = "Haslo")]
         [StringLength(30, ErrorMessage = "Haslo nie moze miec wiecej niz 30 znakow")]
         [DataType(DataType.Password)]
-        //Later add regular expression for require special chars and at least one number
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = ("Nieprawidlowe haslo"))]
         [Display(Name = "Potwierdz haslo")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Adres E-mail")]
+        [EmailAddress]
+        [Required(ErrorMessage = "Pole jest wymagane")]
+        public string Email { get; set; }
+
+        [Display(Name = "Numer telefonu")]
+        public string Phone { get; set; }
 
         public User User { get; set; }
     }

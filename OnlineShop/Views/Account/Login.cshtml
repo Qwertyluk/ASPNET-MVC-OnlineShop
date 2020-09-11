@@ -8,7 +8,7 @@
 <div class="mainAccountContainer">
     <h1 class="containerHeader">Logowanie</h1>
     <div class="accountContainer">
-        @using (Html.BeginForm("Login"))
+        @using (Html.BeginForm("Login", "Account" , new { returnUrl = ViewBag.returnUrl }))
         {
             @Html.AntiForgeryToken()
         <table>

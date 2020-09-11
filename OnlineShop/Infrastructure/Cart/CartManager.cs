@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using OnlineShop.Infrastructure.SessionProvider;
 using OnlineShop.DAL;
+using OnlineShop.Models.ViewModels;
 
 namespace OnlineShop.Infrastructure.Cart
 {
@@ -19,20 +20,20 @@ namespace OnlineShop.Infrastructure.Cart
             this.shopContext = shopContext;
         }
 
-        public List<OrderElement> GetCart()
+        public List<CartOrderElement> GetCart()
         {
-            List<OrderElement> cartElements;
+            List<CartOrderElement> cartElements;
 
-            if ((cartElements = session.Get<List<OrderElement>>(DefaultSessionProvider.CartElementsSessionName)) != null)
+            if ((cartElements = session.Get<List<CartOrderElement>>(DefaultSessionProvider.CartElementsSessionName)) != null)
                 return cartElements;
             else
-                return new List<OrderElement>();
+                return new List<CartOrderElement>();
         }
 
         public void Add(int id)
         {
-            List<OrderElement> cartElements = GetCart();
-            OrderElement element;
+            List<CartOrderElement> cartElements = GetCart();
+            CartOrderElement element;
 
             if((element = cartElements.Find(c => c.ProductElement.ProductId == id)) != null)
             {
@@ -46,7 +47,7 @@ namespace OnlineShop.Infrastructure.Cart
                 Product product;
                 if((product = shopContext.Products.Where(p => p.ProductId == id).SingleOrDefault()) != null) { 
                     //If the added product exists in the database
-                    element = new OrderElement()
+                    element = new CartOrderElement()
                     {
                         ProductElement = product,
                         Amount = 1
@@ -61,8 +62,8 @@ namespace OnlineShop.Infrastructure.Cart
 
         public void Remove(int id)
         {
-            List<OrderElement> cartElements = GetCart();
-            OrderElement element;
+            List<CartOrderElement> cartElements = GetCart();
+            CartOrderElement element;
 
             if ((element = cartElements.Find(c => c.ProductElement.ProductId == id)) != null)
             {
@@ -77,9 +78,9 @@ namespace OnlineShop.Infrastructure.Cart
             }
         }
 
-        void Clean()
+        public void Clear()
         {
-            session.Set<List<OrderElement>>(DefaultSessionProvider.CartElementsSessionName, null);
+            session.Set<List<CartOrderElement>>(DefaultSessionProvider.CartElementsSessionName, null);
         }
 
         public decimal GetOrderValue()
@@ -91,16 +92,49 @@ namespace OnlineShop.Infrastructure.Cart
             return sum;
         }
 
-        void CreateOrder()
+        public bool CreateOrder(OrderViewModel model, string userId)
         {
-            Order newOrder = new Order()
-            {
-                OrderDate = DateTime.Now,
-                StateOfOrder = OrderState.NotStarted,
-                Value = GetOrderValue()
-            };
+            List<CartOrderElement> cartElements = GetCart();
 
-            //fill rest of fields and add to database
+            if(cartElements.Count > 0) {
+
+                List<OrderElement> orderElements = new List<OrderElement>();
+
+                foreach (var item in cartElements)
+                {
+                    OrderElement element = new OrderElement()
+                    {
+                        ProductId = item.ProductElement.ProductId,
+                        Amount = item.Amount,
+                        Value = item.ProductElement.Price * item.Amount
+                    };
+
+                    orderElements.Add(element);
+                }
+
+                Order newOrder = new Order()
+                {
+                    UserId = userId,
+                    PurchaserName = model.PurchaserName,
+                    PurchaserSurname = model.PurchaserSurname,
+                    PurchaserAdress = model.PurchaserAdress,
+                    PurchaserPostCode = model.PurchaserPostCode,
+                    PurchaserPhoneNumber = model.PurchaserPhone,
+                    PurchaserEmail = model.PurchaserEmail,
+                    Comment = model.Comment,
+                    OrderDate = DateTime.Now,
+                    StateOfOrder = OrderState.NotStarted,
+                    Value = GetOrderValue(),
+                    OrderElements = orderElements
+                };
+
+                shopContext.Orders.Add(newOrder);
+                shopContext.SaveChanges();
+
+                return true;
+            }
+
+            return false;
         }
 
         public int GetAmountElementsInCart()

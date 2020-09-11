@@ -53,11 +53,19 @@ namespace OnlineShop.Controllers
             }
         }
 
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
 
         // GET: Account
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.returnUrl = returnUrl;
             return View();
         }
 
@@ -86,13 +94,6 @@ namespace OnlineShop.Controllers
             }
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-                return Redirect(returnUrl);
-            return RedirectToAction("Index", "Home");
-        }
-
         [HttpGet]
         public ActionResult Register()
         {
@@ -107,14 +108,13 @@ namespace OnlineShop.Controllers
             {
                 var user = new ApplicationUser { 
                     UserName = model.Username , 
-                    Email = model.User.Email, 
+                    Email = model.Email, 
+                    PhoneNumber = model.Phone,
                     User = new User() { 
                         Name = model.User.Name, 
                         Surname = model.User.Surname, 
-                        Email = model.User.Email, 
                         Adress = model.User.Adress, 
-                        PostCode = model.User.PostCode, 
-                        Phone = model.User.Phone 
+                        PostCode = model.User.PostCode
                     } 
                 };
 
@@ -138,14 +138,6 @@ namespace OnlineShop.Controllers
             return View(model);
         }
 
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("Validation", error);
-            }
-        }
-
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -156,11 +148,18 @@ namespace OnlineShop.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private IAuthenticationManager AuthenticationManager
+        private ActionResult RedirectToLocal(string returnUrl)
         {
-            get
+            if (Url.IsLocalUrl(returnUrl))
+                return Redirect(returnUrl);
+            return RedirectToAction("Index", "Home");
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
             {
-                return HttpContext.GetOwinContext().Authentication;
+                ModelState.AddModelError("Validation", error);
             }
         }
     }

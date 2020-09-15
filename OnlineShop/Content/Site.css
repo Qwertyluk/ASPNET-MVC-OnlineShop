@@ -419,6 +419,13 @@ body #imageHeader {
                 vertical-align: bottom;
             }
 
+            .mainAccountContainer .accountContainer table .confirmMessage {
+                color: cornflowerblue;
+                text-align: center;
+                font-size: 12px;
+                vertical-align: bottom;
+            }
+
             .mainAccountContainer .accountContainer table tr .labelForEditor {
                 text-align: center;
             }

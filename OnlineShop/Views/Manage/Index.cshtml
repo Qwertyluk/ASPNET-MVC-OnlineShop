@@ -1,0 +1,241 @@
+﻿@model OnlineShop.Models.ViewModels.ManageProfileViewModel
+
+@{
+    ViewBag.Title = "Twoje konto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mainAccountContainer">
+    <h1 class="containerHeader">Twoje dane</h1>
+    <div class="accountContainer">
+        @using (@Html.BeginForm("UpdateProfile", "Manage", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table>
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManageProfile.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManageProfile.Name)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManageProfile.Name)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManageProfile.Surname)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManageProfile.Surname)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManageProfile.Surname)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManageProfile.Adress)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManageProfile.Adress)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManageProfile.Adress)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManageProfile.PostCode)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManageProfile.PostCode)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManageProfile.PostCode)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManageProfile.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManageProfile.Email)<span class="asterisk">*</span>
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManageProfile.Email)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManageProfile.Phone)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManageProfile.Phone)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManageProfile.Phone)
+                    </td>
+                </tr>
+
+                @if (Model.ManageProfile.ErrorOccured.HasValue)
+                {
+                    if (!Model.ManageProfile.ErrorOccured.Value)
+                    {
+                        <tr>
+                            <td colspan="2" class="confirmMessage">
+                                <span>Dane zostały zmienione</span>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var error in ViewData.ModelState["Validation"].Errors)
+                        {
+                            <tr>
+                                <td colspan="2" class="validationMessage">
+                                    @error.ErrorMessage
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+
+                <tr>
+                    <td colspan="2" class="submitButtonColumn">
+                        <input class="submitButton" value="Zmień" type="submit" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="message" colspan="2">
+                        * - Pola sa wymagane
+                    </td>
+                </tr>
+
+            </table>
+        }
+    </div>
+</div>
+
+<div class="mainAccountContainer">
+    <h1 class="containerHeader">Zmień hasło</h1>
+    <div class="accountContainer">
+        @using (@Html.BeginForm("UpdatePassword", "Manage", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table>
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManagePassword.ActualPassword)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManagePassword.ActualPassword)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManagePassword.ActualPassword)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManagePassword.NewPassword)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManagePassword.NewPassword)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManagePassword.NewPassword)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="validationMessage" colspan="2">
+                        @Html.ValidationMessageFor(m => m.ManagePassword.ConfirmNewPassword)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labelForEditor">
+                        @Html.LabelFor(m => m.ManagePassword.ConfirmNewPassword)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.ManagePassword.ConfirmNewPassword)
+                    </td>
+                </tr>
+
+                @if (Model.ManagePassword != null)
+                {
+                    if (!Model.ManagePassword.ErrorOccured.Value)
+                    {
+                        <tr>
+                            <td colspan="2" class="confirmMessage">
+                                <span>Hasło zostało zmienione</span>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var error in ViewData.ModelState["Validation"].Errors)
+                        {
+                            <tr>
+                                <td colspan="2" class="validationMessage">
+                                    @error.ErrorMessage
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+
+                <tr>
+                    <td colspan="2" class="submitButtonColumn">
+                        <input class="submitButton" value="Zmień" type="submit" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="message" colspan="2">
+                        * - Pola sa wymagane
+                    </td>
+                </tr>
+
+            </table>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate-unobtrusive")
+}

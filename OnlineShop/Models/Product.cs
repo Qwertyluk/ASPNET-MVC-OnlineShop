@@ -10,6 +10,9 @@ namespace OnlineShop.Models
     {
         [ScaffoldColumn(false)]
         public int ProductId { get; set; }
+        
+        [ScaffoldColumn(false)]
+        public int CategoryId { get; set; }
 
         [Required(ErrorMessage = "Product name is required.")]
         [StringLength(50)]

@@ -66,7 +66,7 @@ namespace OnlineShop.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.returnUrl = returnUrl;
-            return View();
+            return View(new LoginModel());
         }
 
         [HttpPost]

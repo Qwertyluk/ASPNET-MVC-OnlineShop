@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using OnlineShop.Infrastructure.DAL;
 using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace OnlineShop.DAL
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<CartOrderElement> OrderElements { get; set; }
+
+        static ShopContext()
+        {
+            Database.SetInitializer(new DatabaseInitializer());
+        }
 
         public static ShopContext Create() 
         {

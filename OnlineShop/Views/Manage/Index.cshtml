@@ -194,7 +194,7 @@
                     </td>
                 </tr>
 
-                @if (Model.ManagePassword != null)
+                @if (Model.ManagePassword.ErrorOccured != null)
                 {
                     if (!Model.ManagePassword.ErrorOccured.Value)
                     {

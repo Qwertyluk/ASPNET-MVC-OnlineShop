@@ -47,6 +47,7 @@ namespace OnlineShop.Controllers
                     Phone = user.PhoneNumber,
                     ErrorOccured = null
                 },
+                ManagePassword = new ManagePassword()
             });
         }
 

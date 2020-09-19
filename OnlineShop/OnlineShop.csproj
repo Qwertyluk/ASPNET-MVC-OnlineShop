@@ -200,6 +200,7 @@
     <Compile Include="Infrastructure\CacheProvider\DefaultCacheProvider.cs" />
     <Compile Include="Infrastructure\CacheProvider\ICacheProvider.cs" />
     <Compile Include="Infrastructure\Cart\CartManager.cs" />
+    <Compile Include="Infrastructure\DAL\DatabaseInitializer.cs" />
     <Compile Include="Infrastructure\DAL\ShopContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,6 +245,10 @@
     <Compile Include="Migrations\202009110829120_Alter order element and cart order element.cs" />
     <Compile Include="Migrations\202009110829120_Alter order element and cart order element.designer.cs">
       <DependentUpon>202009110829120_Alter order element and cart order element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009170953572_add category id to product model.cs" />
+    <Compile Include="Migrations\202009170953572_add category id to product model.designer.cs">
+      <DependentUpon>202009170953572_add category id to product model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -336,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009110829120_Alter order element and cart order element.resx">
       <DependentUpon>202009110829120_Alter order element and cart order element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009170953572_add category id to product model.resx">
+      <DependentUpon>202009170953572_add category id to product model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

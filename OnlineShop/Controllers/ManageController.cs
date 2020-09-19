@@ -110,6 +110,14 @@ namespace OnlineShop.Controllers
             return View("Index", modelReturn);
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult DisplayOrders()
+        {
+
+
+            return View();
+        }
 
         private void AddErrors(IdentityResult result)
         {

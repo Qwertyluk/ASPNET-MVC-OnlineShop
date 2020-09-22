@@ -60,8 +60,11 @@ namespace OnlineShop.Models
 
     public enum OrderState
     {
-        NotStarted,
+        [Display(Name = "Nowe")]
+        New,
+        [Display(Name = "Realizacja")]
         InProgress,
+        [Display(Name = "Zrealizowane")]
         Ended
     }
 }

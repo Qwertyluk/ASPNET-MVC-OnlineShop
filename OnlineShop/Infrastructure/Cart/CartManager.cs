@@ -123,7 +123,7 @@ namespace OnlineShop.Infrastructure.Cart
                     PurchaserEmail = model.PurchaserEmail,
                     Comment = model.Comment,
                     OrderDate = DateTime.Now,
-                    StateOfOrder = OrderState.NotStarted,
+                    StateOfOrder = OrderState.New,
                     Value = GetOrderValue(),
                     OrderElements = orderElements
                 };

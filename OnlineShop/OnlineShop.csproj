@@ -206,7 +206,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Helpers\UrlHelpers.cs" />
+    <Compile Include="Infrastructure\Extensions\EnumExtensions.cs" />
     <Compile Include="Infrastructure\SessionProvider\ISessionProvider.cs" />
     <Compile Include="Infrastructure\SessionProvider\DefaultSessionProvider.cs" />
     <Compile Include="Infrastructure\SiteMapProviders\CategoriesSiteMapProvider.cs" />

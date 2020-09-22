@@ -1,148 +1,117 @@
-﻿
+﻿@model IEnumerable<OnlineShop.Models.Order>
+
+@using OnlineShop.Models
+@using OnlineShop.Infrastructure.Extensions
 
 @{
     ViewBag.Title = "Zamówienie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="mainContainer">
-    <table style="border-collapse:collapse; width:100%;">
-        <tr>
-            <th>
-                Dane zamawiającego
-            </th>
-            <th>
-                Komentarz do zamówienia
-            </th>
-            <th>
-                Data zamówienia
-            </th>
-            <th>
-                Status zamówienia
-            </th>
-            <th>
-                Wartość zamówienia
-            </th>
-        </tr>
-        <tr style="border:1px solid black; height:150px;">
-            <td style="max-width:150px; border: 1px solid black; text-align:center; font-size:large; overflow:scroll;">
-                Imie Nazwisko<br />
-                111222333<br />
-                email@email.pl<br />
-                Adres zamieszkania<br />
-                42-500
-            </td>
-            <td style="width:400px; text-align:center; border: 1px solid black; min-height:300px;">
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-            </td>
-            <td style="width:100px; text-align:center; border: 1px solid black;">
-                2020/11/25<br />
-                15:23:24
-            </td>
-            <td style="width:100px; text-align:center; border: 1px solid black;">
-                Nowe
-            </td>
-            <td style="width:100px; text-align:center; border: 1px solid black;">
-                170 zł
-            </td>
-        </tr>
-        <tr style="border:1px solid black;  height:50px;">
-            <td style="max-width:150px; text-align:center;">
-                Nazwa produktu
-            </td>
-            <td style="width:400px; text-align:center; border: 1px solid black;">
-                Ilość: 1
-            </td>
-            <td colspan="3" style="text-align:center;">
-                Wartość: 100 zł
-            </td>
-        </tr>
-        <tr style="border:1px solid black;  height:50px;">
-            <td style="max-width:150px; text-align:center;">
-                Nazwa produktu
-            </td>
-            <td style="width:400px; text-align:center; border: 1px solid black;">
-                Ilość: 2
-            </td>
-            <td colspan="3" style="text-align:center;">
-                Wartość: 70zł
-            </td>
-        </tr>
-    </table>
+<div class="mainContainer">
+    @if (Model.Any())
+    {
+        foreach (var order in Model)
+        {
+            <table class="orderElements">
+                <tr>
+                    <th>
+                        Dane zamawiającego
+                    </th>
+                    <th>
+                        Komentarz do zamówienia
+                    </th>
+                    <th>
+                        Data zamówienia
+                    </th>
+                    <th>
+                        Status zamówienia
+                    </th>
+                    <th>
+                        Wartość zamówienia
+                    </th>
+                </tr>
+                <tr class="orderInfo" @if (order.StateOfOrder == OrderState.Ended) { <text> style="background-color: rgb(230, 246, 255)" </text> }>
+                    <td class="personalInfo">
+                        @order.PurchaserName @order.PurchaserSurname<br />
+                        @order.PurchaserPhoneNumber<br />
+                        @order.PurchaserEmail<br />
+                        @order.PurchaserAdress<br />
+                        @order.PurchaserPostCode
+                    </td>
+                    <td class="orderComment">
+                        @order.Comment
+                    </td>
+                    <td class="orderDetails">
+                        @String.Format("{0:yyyy/MM/dd}", order.OrderDate)<br />
+                        @String.Format("{0:hh:mm:ss}", order.OrderDate)
+                    </td>
+                    <td class="orderDetails">
+                        @if (ViewBag.IsAdmin)
+                        {
+                            using (Html.BeginForm("ChangeOrderState", "Manage", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken();
 
-    <br /><br /><br />
-    <hr style="width:100%" />
-    <br /><br /><br />
+                                foreach (var state in Enum.GetValues(typeof(OrderState)).Cast<OrderState>())
+                                {
+                                    @Html.RadioButtonFor(m => order.StateOfOrder, state)
+                                    if (order.StateOfOrder == OrderState.Ended && state == OrderState.Ended)
+                                    {
+                                        <b>@state.GetDisplayName()</b>
+                                    }
+                                    else
+                                    {
+                                        @state.GetDisplayName()
+                                    }
+                                    <br />
+                                }
 
-    <table style="border-collapse:collapse; width:100%;">
-        <tr>
-            <th>
-                Dane zamawiającego
-            </th>
-            <th>
-                Komentarz do zamówienia
-            </th>
-            <th>
-                Data zamówienia
-            </th>
-            <th>
-                Status zamówienia
-            </th>
-            <th>
-                Wartość zamówienia
-            </th>
-        </tr>
-        <tr style="border:1px solid black; height:150px;">
-            <td style="max-width:150px; border: 1px solid black; text-align:center; font-size:large; overflow:scroll;">
-                Imie Nazwisko<br />
-                111222333<br />
-                email@email.pl<br />
-                Adres zamieszkania<br />
-                42-500
-            </td>
-            <td style="width:400px; text-align:center; border: 1px solid black; min-height:300px;">
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                Nazwa produktu - Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-            </td>
-            <td style="width:100px; text-align:center; border: 1px solid black;">
-                2020/11/25<br />
-                15:23:24
-            </td>
-            <td style="width:100px; text-align:center; border: 1px solid black;">
-                Nowe
-            </td>
-            <td style="width:100px; text-align:center; border: 1px solid black;">
-                170 zł
-            </td>
-        </tr>
-        <tr style="border:1px solid black;  height:50px;">
-            <td style="max-width:150px; text-align:center;">
-                Nazwa produktu
-            </td>
-            <td style="width:400px; text-align:center; border: 1px solid black;">
-                Ilość: 1
-            </td>
-            <td colspan="3" style="text-align:center;">
-                Wartość: 1234 zł
-            </td>
-        </tr>
-        <tr style="border:1px solid black;  height:50px; text-align:center;">
-            <td style="max-width:150px;">
-                Nazwa produktu
-            </td>
-            <td style="width:400px; text-align:center; border: 1px solid black;">
-                Ilość: 2
-            </td>
-            <td colspan="3" style="text-align:center;">
-                Wartość: 7263zł
-            </td>
-        </tr>
-    </table>
+                                @Html.HiddenFor(m => order.OrderId)
+                                <input type="submit" value="Zmień" />
+                            }
+                        }
+                        else
+                        {
+                            if (order.StateOfOrder == OrderState.Ended)
+                            {
+                                <b>@order.StateOfOrder.GetDisplayName()</b>
+                            }
+                            else
+                            {
+                                @order.StateOfOrder.GetDisplayName()
+                            }
+
+                        }
+                    </td>
+                    <td class="orderDetails">
+                        @String.Format("{0:0.00}", order.Value) zł
+                    </td>
+                </tr>
+                @foreach (var orderElement in order.OrderElements)
+                {
+                    <tr class="orderElemetInfo" @if (order.StateOfOrder == OrderState.Ended) { <text> style="background-color: rgb(230, 246, 255)" </text> }>
+                        <td style="text-align:center;">
+                            @orderElement.Product.Name
+                        </td>
+                        <td style="text-align:center; border: 1px solid black;">
+                            Ilość: @orderElement.Amount
+                        </td>
+                        <td colspan="3" style="text-align:center;">
+                            Wartość: @String.Format("{0:0.00}", orderElement.Value) zł
+                        </td>
+                    </tr>
+                }
+            </table>
+
+            <br /><br /><br />
+            <hr style="width:100%" />
+            <br /><br /><br />
+        }
+    }
+    else
+    {
+        <h1 class="emptyMessage">Nie posiadasz aktywnych zamówień</h1>
+    }
 </div>
+

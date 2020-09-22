@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="mainContainer">
+<div class="mainContainer">
     @if (Model.OrderElements.Count > 0)
     {
         <table id="cartTable">
@@ -42,7 +42,7 @@
     }
     else
     {
-        <h1 id="emptyCartMessage">Twój koszyk jest pusty</h1>
+        <h1 class="emptyMessage">Twój koszyk jest pusty</h1>
     }
 <div style="width:1000px;">
     <a class="linkButton" href="@Url.Action("Index", "Home")" style="float:left;">Kontynuuj zakupy</a>

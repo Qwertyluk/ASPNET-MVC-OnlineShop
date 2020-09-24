@@ -6,7 +6,9 @@ using OnlineShop.Models;
 using OnlineShop.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -128,7 +130,7 @@ namespace OnlineShop.Controllers
                 string userId = User.Identity.GetUserId();
                 orders = context.Orders.Where(o => o.UserId == userId).OrderByDescending(o => o.OrderDate).Include("OrderElements");
             }
-                
+
 
             return View(orders);
         }
@@ -142,6 +144,58 @@ namespace OnlineShop.Controllers
             context.SaveChanges();
 
             return RedirectToAction("DisplayOrders");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+            ProductAdditionViewModel model = new ProductAdditionViewModel()
+            {
+                Product = new Product(),
+                Categories = context.Categories
+            };
+
+            return View(model);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddProduct(Product product, HttpPostedFileBase file)
+        {
+            ProductAdditionViewModel model = new ProductAdditionViewModel()
+            {
+                Categories = context.Categories
+            };
+
+            if (ModelState.IsValid)
+            {
+                if (file is object && file.ContentLength > 0)
+                {
+                    //Save file
+                    file.SaveAs(Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageProductCatalogPath"]), file.FileName));
+
+                    product.AddTime = DateTime.Now;
+                    product.ImageName = file.FileName;
+                    product.Price = Math.Round(product.Price, 2);
+                    //Add product to database
+                    context.Entry(product).State = EntityState.Added;
+                    context.SaveChanges();
+
+                    model.Product = new Product();
+
+                    return View(model);
+                }
+                else
+                {
+                    ModelState.AddModelError("FileError", "Nie załadowano pliku");
+                }
+            }
+
+            model.Product = product;
+
+            return View(model);
         }
 
         private void AddErrors(IdentityResult result)

@@ -1,0 +1,141 @@
+﻿@model OnlineShop.Models.ViewModels.ProductAdditionViewModel
+
+@{
+    ViewBag.Title = "Dodawanie produktu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mainAccountContainer">
+    <h1 class="containerHeader">Dodawanie produktu</h1>
+    <div class="accountContainer">
+        @using (Html.BeginForm("AddProduct", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <table>
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.Product.Name)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Product.Name)<span class="asterisk">*</span>
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Product.Name)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.Product.Brand)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Product.Brand)<span class="asterisk">*</span>
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Product.Brand)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.Product.Description)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Product.Description)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Product.Description)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.Product.Price)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Product.Price)<span class="asterisk">*</span>
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Product.Price)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="validationMessage" colspan="2">
+                    @Html.ValidationMessageFor(m => m.Product.IsOnSale)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Product.IsOnSale)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Product.IsOnSale)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="labelForEditor">
+                    Wybierz kategorię
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.Product.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"))
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Wybierz obrazek produktu
+                </td>
+                <td>
+                    <input type="file" name="file" />
+                </td>
+            </tr>
+
+            @if (ViewData.ModelState["FileError"] is object && ViewData.ModelState["FileError"].Errors.Any())
+            {
+                <tr>
+                    <td colspan="2" class="validationMessage">
+                        @ViewData.ModelState["FileError"].Errors.First().ErrorMessage
+                    </td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="2" class="submitButtonColumn">
+                    <input class="submitButton" value="Dodaj" type="submit" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="message" colspan="2">
+                    * - Pola sa wymagane
+                </td>
+            </tr>
+
+        </table>
+        }
+    </div>
+</div>
+
+
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate-unobtrusive")
+}

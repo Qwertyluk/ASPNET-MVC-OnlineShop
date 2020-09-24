@@ -1,13 +1,17 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
         @Html.AntiForgeryToken()
 
         <div class="accountContainerTop">
             <ul>
                 <li>@Html.ActionLink("Zamówienia", "DisplayOrders", "Manage", routeValues: null, htmlAttributes: new { @class = "accountContainerButton" })</li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Dodaj Produkt", "AddProduct", "Manage", routeValues: null, htmlAttributes: new { @class = "accountContainerButton" })</li>
+                }
                 <li>@Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "accountContainerButton" })</li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()" class="accountContainerButton">Wyloguj</a></li>
             </ul>

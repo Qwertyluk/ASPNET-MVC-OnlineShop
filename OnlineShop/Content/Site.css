@@ -391,7 +391,7 @@ body #imageHeader {
     width: 35%;
     border: 1px solid black;
     margin: 150px auto;
-    overflow: auto;
+    overflow: hidden;
 }
 
     .mainAccountContainer .containerHeader {

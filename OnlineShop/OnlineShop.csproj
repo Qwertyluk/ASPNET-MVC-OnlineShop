@@ -252,6 +252,10 @@
     <Compile Include="Migrations\202009170953572_add category id to product model.designer.cs">
       <DependentUpon>202009170953572_add category id to product model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009230856094_Changed product model.cs" />
+    <Compile Include="Migrations\202009230856094_Changed product model.designer.cs">
+      <DependentUpon>202009230856094_Changed product model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -265,6 +269,7 @@
     <Compile Include="Models\ViewModels\LoginModel.cs" />
     <Compile Include="Models\ViewModels\ManageProfileViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductAdditionViewModel.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -307,6 +312,7 @@
     <Content Include="Views\Cart\ConfirmOrder.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\DisplayOrders.cshtml" />
+    <Content Include="Views\Manage\AddProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -347,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009170953572_add category id to product model.resx">
       <DependentUpon>202009170953572_add category id to product model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009230856094_Changed product model.resx">
+      <DependentUpon>202009230856094_Changed product model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

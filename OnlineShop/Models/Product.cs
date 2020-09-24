@@ -12,24 +12,32 @@ namespace OnlineShop.Models
         public int ProductId { get; set; }
         
         [ScaffoldColumn(false)]
+        [Display(Name = "Kategoria")]
         public int CategoryId { get; set; }
 
-        [Required(ErrorMessage = "Product name is required.")]
+        [Required(ErrorMessage = "Nazwa produktu jest wymagana")]
         [StringLength(50)]
+        [Display(Name = "Nazwa")]
         public string Name { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Marka")]
+        [Required(ErrorMessage = "Marka produktu jest wymagana")]
         public string Brand { get; set; }
 
+        [Display(Name = "Opis")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Product price is required.")]
+        [Display(Name = "Cena")]
+        [Required(ErrorMessage = "Cena produktu jest wymagana")]
+        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
         [ScaffoldColumn(false)]
         public bool IsSold { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Display(Name="Wyprzedaż")]
         public bool IsOnSale { get; set; }
 
         [ScaffoldColumn(false)]

@@ -7,17 +7,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="mainContainer">
-    <div class="navigationPath">
-        <img src="@Url.GetImagePath("house.png")"/>
+<div class="mainContainer">
+    <div class="navigationPath" style="margin-bottom:25px;">
+        <img src="@Url.GetImagePath("house.png")" />
         <h3>@Html.MvcSiteMap().SiteMapPath()</h3>
     </div>
     <div>
-        <div id="mainContainerLeft">
-            <img id="productImage" src="@Url.GetProductImagePath(Model.ImageName)" />
+        <div class="mainContainerLeft">
+            <img id="productImage2" src="@Url.GetProductImagePath(Model.ImageName)" />
         </div>
 
-        <div id="mainContainerRight">
+        <div class="mainContainerRight">
 
             <div id="productTable">
 
@@ -41,12 +41,19 @@
             <br />
             <hr width=65% />
 
-            <div id="productDescription">
+            <div id="productDescription" ">
                 <span>
                     @Model.Description
                 </span>
             </div>
 
+            @if (User.IsInRole("Admin"))
+            {
+                <div id="manageProductButtons">
+                    <a class="linkButton" href="@Url.Action("EditProduct", "Manage", new { productId = Model.ProductId })" style="float:left;">Edytuj</a>
+                    <a class="linkButton" href="@Url.Action("DeleteProduct", "Manage", new { productId = Model.ProductId })" style="float:right;">Usuń</a>
+                </div>
+            }
         </div>
     </div>
 </div>

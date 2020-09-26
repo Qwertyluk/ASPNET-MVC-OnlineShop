@@ -34,10 +34,10 @@ namespace OnlineShop.Models
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Display(Name = "Wyprzedane")]
         public bool IsSold { get; set; }
 
-        [Display(Name="Wyprzedaż")]
+        [Display(Name = "Wyprzedaż")]
         public bool IsOnSale { get; set; }
 
         [ScaffoldColumn(false)]

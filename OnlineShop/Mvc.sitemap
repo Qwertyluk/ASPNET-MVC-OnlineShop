@@ -12,7 +12,8 @@
     </mvcSiteMapNode>
     <mvcSiteMapNode title="Login" controller="Account" action="Login"/>
     <mvcSiteMapNode title="Registration" controller ="Account" action="Register"/>
-    <mvcSiteMapNode title="ManageAccount" controller="Manage" action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="ManageAccount" controller="Manage" action="Index" />
+    <mvcSiteMapNode title="DisplayOrders" controller="Manage" action="DisplayOrders"/>
   </mvcSiteMapNode>
 
 </mvcSiteMap>

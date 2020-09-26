@@ -1,0 +1,97 @@
+﻿@model OnlineShop.Models.Product
+
+@{
+    ViewBag.Title = "Usuwanie produktu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mainAccountContainer">
+    <h1 class="containerHeader">Usuwanie produktu</h1>
+    <div class="accountContainer">
+        <table>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Name)
+                </td>
+                <td class="editor">
+                    @Html.DisplayFor(m => m.Name)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Brand)
+                </td>
+                <td class="editor">
+                    @Html.DisplayFor(m => m.Brand)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="labelForEditor">
+                    Kategoria
+                </td>
+                <td class="editor">
+                    @Html.DisplayFor(m => m.ProductCategory.Name)
+                </td>
+            </tr>
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Description)
+                </td>
+                <td class="editor">
+                    @Html.DisplayFor(m => m.Description)
+                    mdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfd
+                    mdskgndsfknhksfnhghgjfd
+                    mdskgndsfknhksfnhghgjfd
+                    mdskgndsfknhksfnhghgjfd
+                    mdskgndsfknhksfnhghgjfd
+                    mdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfdmdskgndsfknhksfnhghgjfd
+                </td>
+            </tr>
+
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.Price)
+                </td>
+                <td class="editor">
+                    @Html.DisplayFor(m => m.Price)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.IsOnSale)
+                </td>
+                <td class="editor">
+                    @Html.DisplayFor(m => m.IsOnSale)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="labelForEditor">
+                    @Html.LabelFor(m => m.IsSold)
+                </td>
+                <td class="editor">
+                    @Html.DisplayFor(m => m.IsSold)
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="deleteButtonColumn">
+                    @using (@Html.BeginForm("DeleteProductFromDB", "Manage", new { productId = Model.ProductId } ,FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="Usuń">
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate")
+    @System.Web.Optimization.Scripts.Render("~/bundles/validate-unobtrusive")
+}

@@ -173,17 +173,21 @@ namespace OnlineShop.Controllers
             {
                 if (file is object && file.ContentLength > 0)
                 {
-                    //Save file
-                    file.SaveAs(Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageProductCatalogPath"]), file.FileName));
-
                     product.AddTime = DateTime.Now;
-                    product.ImageName = file.FileName;
+                    product.ImageName = Guid.NewGuid() + file.FileName;
                     product.Price = Math.Round(product.Price, 2);
-                    //Add product to database
+
+                    //Save the file
+                    file.SaveAs(Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageProductCatalogPath"]), product.ImageName));
+
+                    //Add a product to the database
                     context.Entry(product).State = EntityState.Added;
                     context.SaveChanges();
 
                     model.Product = new Product();
+                    model.AdditionSucceed = true;
+
+                    ModelState.Clear();
 
                     return View(model);
                 }
@@ -194,8 +198,81 @@ namespace OnlineShop.Controllers
             }
 
             model.Product = product;
+            model.AdditionSucceed = false;
 
             return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditProduct(int productId)
+        {
+            ProductAdditionViewModel model = new ProductAdditionViewModel()
+            {
+                Product = context.Products.Find(productId),
+                Categories = context.Categories
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProduct(Product product, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+                if (file is object && file.ContentLength > 0)
+                {
+                    //Delete existing product image
+                    if (System.IO.File.Exists(Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageProductCatalogPath"]), product.ImageName)))
+                        System.IO.File.Delete(Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageProductCatalogPath"]), product.ImageName));
+                    
+                    product.ImageName = Guid.NewGuid() + file.FileName;
+                    //Save the file as a new product image
+                    file.SaveAs(Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageProductCatalogPath"]), product.ImageName));
+                }
+
+                context.Entry(product).State = EntityState.Modified;
+                context.SaveChanges();
+
+                return RedirectToAction("ShowInformation", "Product", new { id = product.ProductId });
+            }
+
+            //Return to the view with the same product information
+            ProductAdditionViewModel model = new ProductAdditionViewModel()
+            {
+                Product = product,
+                Categories = context.Categories,
+                AdditionSucceed = false
+            };
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult DeleteProduct(int productId)
+        {
+            return View(context.Products.Find(productId));
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteProductFromDB(int productId)
+        {
+            Product deleteProduct = context.Products.Find(productId);
+
+            context.Entry(deleteProduct).State = EntityState.Deleted;
+            context.SaveChanges();
+
+            //Delete existing product image
+            if (System.IO.File.Exists(Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageProductCatalogPath"]), deleteProduct.ImageName)))
+                System.IO.File.Delete(Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["ImageProductCatalogPath"]), deleteProduct.ImageName));
+
+            return RedirectToAction("Index", "Home");
         }
 
         private void AddErrors(IdentityResult result)

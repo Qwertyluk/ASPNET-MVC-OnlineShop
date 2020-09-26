@@ -1,16 +1,20 @@
 ﻿@model OnlineShop.Models.ViewModels.ProductAdditionViewModel
 
 @{
-    ViewBag.Title = "Dodawanie produktu";
+    ViewBag.Title = "Edycja produktu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="mainAccountContainer">
-    <h1 class="containerHeader">Dodawanie produktu</h1>
+    <h1 class="containerHeader">Edycja produktu</h1>
     <div class="accountContainer">
-        @using (Html.BeginForm("AddProduct", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        { 
+        @using (Html.BeginForm("EditProduct", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
             @Html.Partial("_ProductForm", Model)
+
+            @Html.HiddenFor(m => m.Product.ProductId)
+            @Html.TextBoxFor(m => m.Product.AddTime, "{0:yyyy/MM/dd HH:mm:ss.fff}", htmlAttributes: new { @type = "hidden" })
+            @Html.HiddenFor(m => m.Product.ImageName)
         }
     </div>
 </div>

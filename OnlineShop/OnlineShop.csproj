@@ -313,6 +313,9 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\DisplayOrders.cshtml" />
     <Content Include="Views\Manage\AddProduct.cshtml" />
+    <Content Include="Views\Manage\EditProduct.cshtml" />
+    <Content Include="Views\Manage\DeleteProduct.cshtml" />
+    <Content Include="Views\Shared\_ProductForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

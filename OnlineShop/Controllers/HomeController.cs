@@ -1,7 +1,10 @@
 ﻿using OnlineShop.DAL;
 using OnlineShop.Infrastructure;
 using OnlineShop.Infrastructure.CacheProvider;
+using OnlineShop.Infrastructure.Email;
 using OnlineShop.Models;
+using OnlineShop.Models.ViewModels;
+using Postal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +38,6 @@ namespace OnlineShop.Controllers
                 homeIndexModel.ExtantCategories = shopContext.Categories;
                 cache.Set(DefaultCacheProvider.CategoriesCacheName, homeIndexModel.ExtantCategories, 3600);
             }*/
-
 
             return View(homeIndexModel);
         }

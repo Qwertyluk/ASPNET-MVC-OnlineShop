@@ -1,0 +1,22 @@
+﻿@model OnlineShop.Models.ViewModels.OrderEmail
+
+To: @Model.To
+From: @Model.From
+Subject: Order confirmation
+Content-Type: text/html; charset=utf-8
+
+<html>
+<body>
+    <p>Hello @Model.Order.PurchaserName</p>
+    This email is a confirmation of your order in our service.<br />
+    Your personal data attached to the order:<br />
+    <b>Name</b> - @Model.Order.PurchaserName<br />
+    <b>Surname</b> - @Model.Order.PurchaserSurname<br />
+    <b>Phone</b> - @Model.Order.PurchaserPhone<br />
+    <b>Address</b> - @Model.Order.PurchaserAdress<br />
+    <b>Postcode</b> - @Model.Order.PurchaserPostCode<br />
+    Comment to your order:<br />
+    @Model.Order.Comment<br /><br />
+    <b style="font-size:16px;">Order value</b> - @Model.Order.OrderValue zł.
+</body>
+</html>

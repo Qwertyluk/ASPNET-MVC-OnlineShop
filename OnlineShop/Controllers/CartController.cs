@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 using OnlineShop.App_Start;
 using OnlineShop.DAL;
 using OnlineShop.Infrastructure.Cart;
+using OnlineShop.Infrastructure.Email;
 using OnlineShop.Infrastructure.SessionProvider;
 using OnlineShop.Models;
 using OnlineShop.Models.ViewModels;
@@ -70,7 +71,7 @@ namespace OnlineShop.Controllers
         [Authorize]
         public async Task<ActionResult> CreateOrder()
         {
-            //Get user id and data then push them to view
+            //Get user id and data then push them to the view
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             OrderViewModel model = new OrderViewModel()
@@ -96,6 +97,10 @@ namespace OnlineShop.Controllers
                 if (cartManager.CreateOrder(model, User.Identity.GetUserId()))
                 {
                     ViewBag.Message = "Twoje zamówienie zostało przyjęte.";
+
+                    //Send email confirmation
+                    EmailSender.GetEmailSender.ConfirmOrder(model);
+
                     cartManager.Clear();
                 }
                 else

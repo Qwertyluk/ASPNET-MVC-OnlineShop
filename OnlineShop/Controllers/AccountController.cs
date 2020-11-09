@@ -2,8 +2,10 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineShop.App_Start;
+using OnlineShop.Infrastructure.Email;
 using OnlineShop.Models;
 using OnlineShop.Models.ViewModels;
+using Postal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,6 +130,8 @@ namespace OnlineShop.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    EmailSender.GetEmailSender.ConfirmRegistration(user);
 
                     return RedirectToAction("Index", "Home");
                 }

@@ -1,0 +1,18 @@
+﻿@model OnlineShop.Models.ViewModels.RegistrationEmail
+
+To: @Model.To
+From: @Model.From
+Subject: Registration confirmation
+Content-Type: text/html; charset=utf-8
+
+<html>
+<body>
+    <p>Hello @Model.Username,</p>
+    This email is a confirmation of your registration in our service.<br />
+    Your personal data provided by you during registration:<br />
+    <b>Name</b> - @Model.User.Name<br />
+    <b>Surname</b> - @Model.User.Surname<br />
+    <b>Address</b> - @Model.User.Adress<br />
+    <b>Postcode</b> - @Model.User.PostCode<br />
+</body>
+</html>

@@ -1,4 +1,5 @@
 using OnlineShop.App_Start;
+using OnlineShop.Infrastructure.Email;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace OnlineShop
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            EmailSender.Initialize("tt123sadfge@gmail.com");
         }
     }
 }

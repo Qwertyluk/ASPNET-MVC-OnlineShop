@@ -19,7 +19,7 @@ namespace OnlineShop.Controllers
     public class ManageController : Controller
     {
         private ApplicationUserManager _userManager;
-        private ShopContext context = new ShopContext();
+        private readonly ShopContext context = new ShopContext();
 
         public ApplicationUserManager UserManager
         {

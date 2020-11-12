@@ -106,6 +106,7 @@ namespace OnlineShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(UserViewModel model)
         {
+            // Verify model data
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { 

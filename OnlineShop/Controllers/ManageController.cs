@@ -78,6 +78,7 @@ namespace OnlineShop.Controllers
                 if (model.ManageProfile.ErrorOccured.Value)
                     AddErrors(result);
             }
+            model.ManagePassword = new ManagePassword();
 
             return View("Index", model);
         }

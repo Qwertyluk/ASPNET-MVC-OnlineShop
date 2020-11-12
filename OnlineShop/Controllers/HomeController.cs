@@ -25,19 +25,13 @@ namespace OnlineShop.Controllers
             homeIndexModel.OnSaleProducts = shopContext.Products.Where(p => !p.IsSold && p.IsOnSale).OrderBy(p => Guid.NewGuid()).Take(3);
             homeIndexModel.NewProducts = shopContext.Products.Where(p => !p.IsSold).OrderByDescending(p => p.AddTime).Take(3);
 
+            // Check if the Categories are in the cache
             if ((homeIndexModel.ExtantCategories = cache.Get<IEnumerable<Category>>(DefaultCacheProvider.CategoriesCacheName)) == null)
             { 
+                // If not then download them from the database and cache them
                 homeIndexModel.ExtantCategories = shopContext.Categories;
                 cache.Set(DefaultCacheProvider.CategoriesCacheName, homeIndexModel.ExtantCategories, 3600);
             }
-
-            /*if (cache.isSet(DefaultCacheProvider.CategoriesCacheName))
-                homeIndexModel.ExtantCategories = cache.Get<IEnumerable<Category>>(DefaultCacheProvider.CategoriesCacheName);
-            else
-            {
-                homeIndexModel.ExtantCategories = shopContext.Categories;
-                cache.Set(DefaultCacheProvider.CategoriesCacheName, homeIndexModel.ExtantCategories, 3600);
-            }*/
 
             return View(homeIndexModel);
         }
